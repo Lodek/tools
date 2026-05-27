@@ -12,7 +12,13 @@ mv jot ~/.local/bin/
 
 ## Configuration
 
-Create `~/.config/jot/config.yaml`:
+Config defaults to `~/.jot.yaml`. Override with the `JOT_CONFIG` environment variable:
+
+```sh
+export JOT_CONFIG=/path/to/config.yaml
+```
+
+Config format:
 
 ```yaml
 collections:

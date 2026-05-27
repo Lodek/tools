@@ -54,8 +54,12 @@ func joinStrings(s []string) string {
 	return result
 }
 
-// DefaultPath returns the default config file path (~/.config/jot/config.yaml).
+// DefaultPath returns the config file path from the JOT_CONFIG environment
+// variable, falling back to ~/.jot.yaml.
 func DefaultPath() string {
+	if p := os.Getenv("JOT_CONFIG"); p != "" {
+		return p
+	}
 	home, _ := os.UserHomeDir()
 	return filepath.Join(home, ".jot.yaml")
 }

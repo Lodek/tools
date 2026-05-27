@@ -4,7 +4,7 @@
 
 ## Configuration
 
-Config lives at `~/.jot.yaml`:
+Config defaults to `~/.jot.yaml`. Override with the `JOT_CONFIG` environment variable:
 
 ```yaml
 default_collection: personal
@@ -86,4 +86,4 @@ Parses markdown files and merges entries into the target collection, splitting t
 - **Use `jot add`** to create entries programmatically — pipe the body text to stdin.
 - **Do not call `jot new`** — it opens an interactive editor and will hang.
 - `jot read` is safe to call non-interactively and returns entries to stdout.
-- The `--config` global flag overrides the config path: `jot --config /path/to/config.yaml read`.
+- Set `JOT_CONFIG` to override the default config path (`~/.jot.yaml`).

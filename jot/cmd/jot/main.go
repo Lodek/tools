@@ -13,15 +13,11 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var cfgPath string
-
 func main() {
 	root := &cobra.Command{
 		Use:   "jot",
 		Short: "Journal management tool",
 	}
-
-	root.PersistentFlags().StringVar(&cfgPath, "config", config.DefaultPath(), "config file path")
 
 	root.AddCommand(initCmd())
 	root.AddCommand(readCmd())
@@ -39,10 +35,11 @@ func initCmd() *cobra.Command {
 		Use:   "init",
 		Short: "Initialize a default config file",
 		RunE: func(cmd *cobra.Command, args []string) error {
-			if err := config.Init(cfgPath); err != nil {
+			path := config.DefaultPath()
+			if err := config.Init(path); err != nil {
 				return err
 			}
-			fmt.Printf("Config created at %s\n", cfgPath)
+			fmt.Printf("Config created at %s\n", path)
 			fmt.Println("Edit it to add your journal collections.")
 			return nil
 		},
@@ -50,7 +47,7 @@ func initCmd() *cobra.Command {
 }
 
 func loadConfig() *config.Config {
-	cfg, err := config.Load(cfgPath)
+	cfg, err := config.Load(config.DefaultPath())
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error loading config: %v\n", err)
 		os.Exit(1)

@@ -1,0 +1,13 @@
+README.md
+pyproject.toml
+src/pm/__init__.py
+src/pm/cli.py
+src/pm/config.py
+src/pm/project.py
+src/pm/shell.zsh
+src/pm.egg-info/PKG-INFO
+src/pm.egg-info/SOURCES.txt
+src/pm.egg-info/dependency_links.txt
+src/pm.egg-info/entry_points.txt
+src/pm.egg-info/requires.txt
+src/pm.egg-info/top_level.txt
